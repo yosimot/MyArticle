@@ -49,9 +49,6 @@ public class QuestionsListAdapter extends BaseAdapter{
         TextView titleText = (TextView)convertView.findViewById(R.id.titleTextView);
         titleText.setText(mQuestionArrayList.get(position).getTitle());
 
-        TextView nameText = (TextView)convertView.findViewById(R.id.nameTextView);
-        nameText.setText(mQuestionArrayList.get(position).getName());
-
         TextView resText = (TextView)convertView.findViewById(R.id.resTextView);
         int resNum = mQuestionArrayList.get(position).getAnswers().size();
         resText.setText(String.valueOf(resNum));

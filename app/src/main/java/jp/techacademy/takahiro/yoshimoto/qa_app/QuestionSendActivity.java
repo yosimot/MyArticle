@@ -31,7 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -45,6 +44,7 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
     private ProgressDialog mProgress;
     private EditText mTitleText;
     private EditText mBodyText;
+    private EditText mUrlText;
     private ImageView mImageView;
     private Button mSendButton;
 
@@ -61,10 +61,11 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
         mGenre = extras.getInt("genre");
 
         // UIの準備
-        setTitle("質問作成");
+        setTitle("記事の登録");
 
         mTitleText = (EditText)findViewById(R.id.titleText);
         mBodyText = (EditText)findViewById(R.id.bodyText);
+        mUrlText = (EditText)findViewById(R.id.urlText);
 
         mSendButton = (Button)findViewById(R.id.sendButton);
         mSendButton.setOnClickListener(this);
@@ -73,7 +74,7 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
         mImageView.setOnClickListener(this);
 
         mProgress = new ProgressDialog(this);
-        mProgress.setMessage("投稿中…");
+        mProgress.setMessage("只今保存中です…");
 
     }
 
@@ -152,9 +153,10 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
             // UID
             data.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-            // タイトルと本文を取得する
+            // タイトルと本文とURLを取得する
             String title = mTitleText.getText().toString();
             String body = mBodyText.getText().toString();
+            String url = mUrlText.getText().toString();
 
             if(title.length() == 0){
                 // 質問が入力されていないときはエラーを表示するだけ
@@ -168,12 +170,19 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
                 return;
             }
 
+            if(url.length() == 0){
+                // URLが入力されていないときはエラーを表示するだけ
+                Snackbar.make(v, "URLを入力してください", Snackbar.LENGTH_LONG).show();
+                return;
+            }
+
             //Preferenceから名前をとる
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             String name = sp.getString(Const.NameKEY, "");
 
             data.put("title", title);
             data.put("body", body);
+            data.put("url", url);
             data.put("name", name);
 
             // 添付画像を取得する
@@ -240,7 +249,7 @@ public class QuestionSendActivity extends AppCompatActivity implements View.OnCl
         if(databaseError == null){
             finish();
         }else{
-            Snackbar.make(findViewById(android.R.id.content), "投稿に失敗しました", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), "保存に失敗しました", Snackbar.LENGTH_LONG).show();
         }
     }
 }

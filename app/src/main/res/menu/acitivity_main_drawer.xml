@@ -3,17 +3,26 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_hobby"
-            android:title="趣味"/>
+            android:id="@+id/nav_it"
+            android:title="IT/最先端技術"/>
         <item
-            android:id="@+id/nav_life"
-            android:title="生活"/>
+            android:id="@+id/nav_career"
+            android:title="キャリア/転職"/>
         <item
-            android:id="@+id/nav_health"
-            android:title="健康"/>
+            android:id="@+id/nav_economics"
+            android:title="経済/投資"/>
         <item
-            android:id="@+id/nav_computer"
-            android:title="コンピューター"/>
+            android:id="@+id/nav_society"
+            android:title="社会/教育"/>
+        <item
+            android:id="@+id/nav_blog"
+            android:title="ブログ" />
+        <item
+            android:id="@+id/nav_movie"
+            android:title="動画"/>
+        <item
+            android:id="@+id/nav_others"
+            android:title="その他"/>
     </group>
 
 </menu>

@@ -1,7 +1,6 @@
 package jp.techacademy.takahiro.yoshimoto.qa_app;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 public class Question implements Serializable {
     private String mTitle;
     private String mBody;
+    private String mUrl;
     private String mName;
     private String mUid;
     private String mQuestionUid;
@@ -24,6 +24,8 @@ public class Question implements Serializable {
     public String getBody(){
         return mBody;
     }
+
+    public String getUrl(){ return mUrl; }
 
     public String getName(){
         return mName;
@@ -49,9 +51,10 @@ public class Question implements Serializable {
         return mAnswerArrayList;
     }
 
-    public Question (String title, String body, String name, String uid, String questionUid, int genre, byte[] bytes, ArrayList<Answer> answers){
+    public Question (String title, String body, String url,  String name, String uid, String questionUid, int genre, byte[] bytes, ArrayList<Answer> answers){
         mTitle = title;
         mBody = body;
+        mUrl = url;
         mName = name;
         mUid = uid;
         mQuestionUid = questionUid;

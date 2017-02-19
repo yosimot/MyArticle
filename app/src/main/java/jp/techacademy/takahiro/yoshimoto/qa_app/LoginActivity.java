@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
         mNameEditText = (EditText)findViewById(R.id.nameText);
 
         mProgress = new ProgressDialog(this);
-        mProgress.setMessage("処理中");
+        mProgress.setMessage("只今処理中です…");
 
         Button createButton = (Button)findViewById(R.id.createButton);
         createButton.setOnClickListener(new View.OnClickListener(){

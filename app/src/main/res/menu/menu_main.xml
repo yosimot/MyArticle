@@ -6,6 +6,6 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="設定"
+        android:title="名前を変更する！"
         app:showAsAction="never" />
 </menu>

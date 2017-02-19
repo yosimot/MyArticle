@@ -39,7 +39,7 @@ public class AnswerSendActivity extends AppCompatActivity implements View.OnClic
         // UIの準備
         mAnswerEditText = (EditText)findViewById(R.id.answerEditText);
         mProgress = new ProgressDialog(this);
-        mProgress.setMessage("投稿中…");
+        mProgress.setMessage("情報を追加しています…");
 
         Button sendButton = (Button)findViewById(R.id.sendButton);
         sendButton.setOnClickListener(this);
@@ -52,7 +52,7 @@ public class AnswerSendActivity extends AppCompatActivity implements View.OnClic
         if(databaseError == null){
             finish();
         }else{
-            Snackbar.make(findViewById(android.R.id.content), "投稿に失敗しました", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(android.R.id.content), "情報追加に失敗しました", Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -81,7 +81,7 @@ public class AnswerSendActivity extends AppCompatActivity implements View.OnClic
 
         if(answer.length() == 0){
             // 回答が入力されていないときはエラーを表示するだけ
-            Snackbar.make(v, "回答を入力してください", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(v, "コメントを入力してください", Snackbar.LENGTH_LONG).show();
             return;
         }
         data.put("body", answer);

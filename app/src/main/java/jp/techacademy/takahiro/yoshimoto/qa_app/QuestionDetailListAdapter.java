@@ -61,13 +61,14 @@ public class QuestionDetailListAdapter extends BaseAdapter {
                 convertView = mLayoutInflater.inflate(R.layout.list_question_detail, parent, false);
             }
             String body = mQuestion.getBody();
+            String url = mQuestion.getUrl();
             String name = mQuestion.getName();
 
             TextView bodyTextView = (TextView)convertView.findViewById(R.id.bodyTextView);
             bodyTextView.setText(body);
 
-            TextView nameTextView = (TextView)convertView.findViewById(R.id.nameTextView);
-            nameTextView.setText(name);
+            TextView urlText = (TextView)convertView.findViewById(R.id.urlText);
+            urlText.setText(url);
 
             byte[] bytes = mQuestion.getImageBytes();
             if(bytes.length != 0){

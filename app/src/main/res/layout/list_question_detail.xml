@@ -20,14 +20,14 @@
         android:inputType="textMultiLine"
         android:layout_alignTop="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"/>
-
+    
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/nameTextView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"/>
-
+        android:text="URL"
+        android:id="@+id/urlText"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/bodyTextView"
+        android:layout_toEndOf="@+id/imageView"/>
+    
 </RelativeLayout>

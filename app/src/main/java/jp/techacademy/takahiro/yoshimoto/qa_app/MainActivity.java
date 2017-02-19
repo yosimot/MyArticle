@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             HashMap map = (HashMap)dataSnapshot.getValue();
             String title = (String)map.get("title");
             String body = (String)map.get("body");
+            String url = (String)map.get("url");
             String name = (String)map.get("name");
             String uid = (String)map.get("uid");
             String imageString =(String)map.get("image");
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     answerArrayList.add(answer);
                 }
             }
-            Question question = new Question(title, body, name, uid, dataSnapshot.getKey(), mGenre, bytes, answerArrayList);
+            Question question = new Question(title, body, url, name, uid, dataSnapshot.getKey(), mGenre, bytes, answerArrayList);
             mQuestionArrayList.add(question);
             mAdapter.notifyDataSetChanged();
         }
@@ -163,18 +164,27 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 int id = item.getItemId();
 
-                if (id == R.id.nav_hobby) {
-                    mToolbar.setTitle("趣味");
+                if (id == R.id.nav_it) {
+                    mToolbar.setTitle("IT/最先端技術");
                     mGenre = 1;
-                } else if (id == R.id.nav_life) {
-                    mToolbar.setTitle("生活");
+                } else if (id == R.id.nav_career) {
+                    mToolbar.setTitle("キャリア/転職");
                     mGenre = 2;
-                } else if (id == R.id.nav_health) {
-                    mToolbar.setTitle("健康");
+                } else if (id == R.id.nav_economics) {
+                    mToolbar.setTitle("経済/投資");
                     mGenre = 3;
-                } else if (id == R.id.nav_computer) {
-                    mToolbar.setTitle("コンピューター");
+                } else if (id == R.id.nav_society) {
+                    mToolbar.setTitle("社会/教育");
                     mGenre = 4;
+                } else if (id == R.id.nav_blog) {
+                    mToolbar.setTitle("ブログ");
+                    mGenre = 5;
+                } else if (id == R.id.nav_movie) {
+                    mToolbar.setTitle("動画");
+                    mGenre = 6;
+                } else if (id == R.id.nav_others) {
+                    mToolbar.setTitle("その他");
+                    mGenre = 7;
                 }
 
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -193,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 mGenreRef.addChildEventListener(mEventListener);
 
                 return true;
+
             }
         });
 
@@ -233,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+            startActivity(intent);
             return true;
         }
 
